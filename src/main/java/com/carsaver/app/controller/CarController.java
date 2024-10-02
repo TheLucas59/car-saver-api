@@ -19,6 +19,11 @@ public class CarController {
         return carRepo.save(car);
     }
 
+    @GetMapping("{id}")
+    public Car getCarById(@PathVariable("id") String id) {
+        return carRepo.findById(id).orElse(null);
+    }
+
     @GetMapping("getAll")
     public List<Car> getAll() {
         return carRepo.findAll();

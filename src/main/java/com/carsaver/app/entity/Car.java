@@ -1,42 +1,26 @@
 package com.carsaver.app.entity;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+import java.time.LocalDate;
+import java.util.List;
+
+@Document(collection = "cars")
+@Data
 public class Car {
 
     @Id
     public String carId;
     private String brand;
     private String model;
+    private String carCategory;
+    private LocalDate deliveryDate;
+    private String doorsAvailable;
+    private int mileage;
 
-    public Car(String brand, String model) {
-        this.brand = brand;
-        this.model = model;
-    }
-
-    public String getCarId() {
-        return carId;
-    }
-
-    public void setCarId(String carId) {
-        this.carId = carId;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
+    private List<Wheel> wheelsAvailable;
+    private List<Engine> enginesAvailable;
+    private List<Gearbox> gearboxesAvailable;
 }
